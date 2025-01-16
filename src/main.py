@@ -2,6 +2,7 @@ import random
 import player_class as pc
 
 def playerTurn(attacker,target):
+    print("(Attack, disengage, solidify, prepare)")
     x = input("What do you do, [" + str(getattr(target, 'name')) + "]?\n")
     if x in "attack":
         if attacker.can_hit(target.speed):
@@ -12,6 +13,10 @@ def playerTurn(attacker,target):
             print(str(target.name) + " completely missed like a dum dum.")
     elif x in "disengage":
         target.disengage()
+    elif x in "solidify":
+        target.solidify()
+    elif x in "prepare":
+        target.prepare()
 
 def main():
     p1In = input("What is your name, player_1?\n")
@@ -20,8 +25,11 @@ def main():
     #player1 = pc.player(250,10,21,.22,p1In) ## Represents the strongest possible player/class
     #player2 = pc.player(75,1,7,.05,p2In) ## Represents the weakest player/class
 
-    player1 = pc.player(225, 4, 18, .05, p1In) ## Tank class; No sidenote
-    player2 = pc.player(125, 10,6, .08, p2In) ## Speedster class; Caffiene addict.
+    #player1 = pc.player(225, 4, 18, .05, p1In) ## Tank class; No sidenote
+    #player2 = pc.player(125, 10,6, .08, p2In) ## Speedster class; Caffiene addict.
+
+    player1 = pc.player(115, 1, 21, .99, p1In)  ## Drunken Fist class; Relies on crits
+    player2 = pc.player(165, 5, 9, .10, p2In)  ## Basic class
 
     p1Initiative = round(random.random()*20,0)
     p2Initiative = round(random.random()*20,0)
